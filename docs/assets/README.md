@@ -6,7 +6,8 @@ LP（`docs/index.html`）から参照される画像・アイコン類。
 |---|---|---|
 | `favicon.svg` | 各種ブラウザタブ用アイコン（ベクタ） | 配置済み |
 | `favicon.ico` | レガシーブラウザ用 fallback | **未配置（任意）** |
-| `og-image.png` | OGP / Twitter カード画像（1200×630 推奨） | **未配置（撮影後に配置）** |
+| `og-image.svg` | OGP ソース（1200×630 ベクタ） | 配置済み |
+| `og-image.png` | OGP / Twitter カード画像（1200×630 PNG） | **未配置：`og-image.svg` を PNG 書き出しして配置** |
 | `demo-before.png` | デモ Before スクリーンショット | **未配置** |
 | `demo-after-tabs.png` | デモ After（タブ一覧） | **未配置** |
 | `demo-after-filtered.png` | デモ After（絞り込み後シート） | **未配置** |
@@ -17,13 +18,30 @@ LP（`docs/index.html`）から参照される画像・アイコン類。
 
 `sales/demo-shotlist.md` を参照。
 
-## og-image.png の作り方（簡易）
+## og-image.png の作り方
 
-1. 1200×630 のキャンバスを用意（Figma / Canva / Keynote など）
-2. 背景は白、左側に `favicon.svg` の拡大版（青色アイコン）
-3. 中央～右に大きく「フォーム仕分け自動化パック」のタイトル
-4. 下部に「Googleフォーム回答を、カテゴリ別シートに自動振り分け」等のサブコピー
-5. PNG で書き出して `og-image.png` として保存
+`og-image.svg` を整備済みなので、PNG への変換だけでよい。
+
+### 方法A: ブラウザでスクリーンショット（最速）
+1. `npm run serve` でローカル配信を起動
+2. <http://localhost:4173/assets/og-image.svg> を開く
+3. ブラウザウィンドウを 1200×630 にリサイズしてスクリーンショット
+4. `og-image.png` として保存
+
+### 方法B: CLI で変換
+```bash
+# ImageMagick
+magick docs/assets/og-image.svg -resize 1200x630 docs/assets/og-image.png
+
+# or rsvg-convert
+rsvg-convert -w 1200 -h 630 docs/assets/og-image.svg -o docs/assets/og-image.png
+```
+
+### 方法C: オンラインコンバータ
+<https://cloudconvert.com/svg-to-png> など。1200×630 を指定して書き出し。
+
+### デザインを変更したい場合
+`og-image.svg` を編集（Figma / Inkscape / テキストエディタ）して再エクスポート。
 
 ## 容量の目安
 
