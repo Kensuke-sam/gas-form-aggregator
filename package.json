@@ -8,7 +8,8 @@
     "site:preview": "node scripts/apply-site-values.mjs",
     "site:apply": "node scripts/apply-site-values.mjs --write",
     "check:links": "node scripts/check-links.mjs",
-    "serve": "node scripts/serve-docs.mjs"
+    "serve": "node scripts/serve-docs.mjs",
+    "og:build": "node scripts/build-og-image.mjs"
   },
   "license": "UNLICENSED"
 }

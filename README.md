@@ -103,6 +103,7 @@ npm run site:preview  # LP/法務ページの値置換をドライラン
 npm run site:apply    # 値置換を書き込み（lock ファイル更新込み）
 npm run check:links   # docs/ 配下の HTML 内部リンク切れ検査
 npm run serve         # docs/ をローカル配信（既定 http://localhost:4173）
+npm run og:build      # og-image.svg から PNG を再生成（Chrome headless 使用・ローカル専用）
 ```
 
 Node.js 22以上が必要（GitHub Actions の CI でも 22 を使用）。

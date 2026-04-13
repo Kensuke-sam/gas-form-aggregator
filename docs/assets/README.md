@@ -20,22 +20,22 @@ LP（`docs/index.html`）から参照される画像・アイコン類。
 
 ## og-image.png の作り方
 
-`og-image.svg` を整備済みなので、PNG への変換だけでよい。
+`og-image.svg` を編集した場合は以下で再生成する。
 
-### 方法A: ブラウザでスクリーンショット（最速）
-1. `npm run serve` でローカル配信を起動
-2. <http://localhost:4173/assets/og-image.svg> を開く
-3. ブラウザウィンドウを 1200×630 にリサイズしてスクリーンショット
-4. `og-image.png` として保存
+### 方法A: npm スクリプト（推奨・Chrome headless）
+```bash
+npm run og:build
+```
+ローカルの Google Chrome を headless で起動して 1200×630 PNG を書き出す。
+macOS 以外は `CHROME_BIN=/path/to/chrome npm run og:build` で実行ファイルを指定。
 
 ### 方法B: CLI で変換
 ```bash
-# ImageMagick
-magick docs/assets/og-image.svg -resize 1200x630 docs/assets/og-image.png
-
-# or rsvg-convert
+# rsvg-convert（フォントが埋め込まれる・推奨）
 rsvg-convert -w 1200 -h 630 docs/assets/og-image.svg -o docs/assets/og-image.png
 ```
+ImageMagick (`magick`) は Ghostscript / Freetype に依存するため macOS 標準環境では
+文字が描画されない。上記 `npm run og:build` か `rsvg-convert` を使うこと。
 
 ### 方法C: オンラインコンバータ
 <https://cloudconvert.com/svg-to-png> など。1200×630 を指定して書き出し。
