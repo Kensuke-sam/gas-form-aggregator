@@ -38,6 +38,8 @@ const TARGETS = [
   'x-social/profile.md',
   'x-social/pinned-post.md',
   'ops/form-confirmation-message.md',
+  'docs/sitemap.xml',
+  'docs/robots.txt',
 ];
 
 // 特定ファイルで `{YYYY-MM-DD}` は「支払期限」など per-invoice の動的値を指し、
@@ -56,6 +58,7 @@ const INITIAL_PLACEHOLDERS = {
   contact_email: ['{連絡先メールアドレス}', '{連絡先メール}', '{メールアドレス}', '{メール}', '[メールアドレス]', '[納品時に記入]'],
   analytics_tool: ['{使用ツール名：Google Analytics等}', '{ツール名}'],
   established_date: ['{YYYY-MM-DD}'],
+  site_url: ['{SITE_URL}'],
 };
 
 // site-values に対応しないが、常に定型文へ置換する項目（初回のみ作用）
@@ -85,24 +88,24 @@ async function main() {
     contact_email: cfg.contact_email,
     established_date: cfg.established_date,
     analytics_tool: cfg.analytics_tool,
+    site_url: cfg.site_url,
   };
 
   // 置換ペア列を構築（前値 → 新値）。
-  // ロック有り: ロック値 → 最新値。 ロック無し: 初回プレースホルダ → 最新値。
+  // ロックあり: ロック値 → 最新値 を主に使いつつ、プレースホルダ→最新値 も併用する
+  //            （後から TARGETS に追加された新規ファイルに元のプレースホルダが残っていた場合に対応）。
+  // ロックなし: 初回プレースホルダ → 最新値 のみ。
   const pairs = [];
   for (const [key, newVal] of Object.entries(currentValues)) {
     if (!newVal) continue;
-    if (lock && lock[key]) {
-      if (lock[key] !== newVal) pairs.push([lock[key], newVal, key]);
-    } else {
-      for (const placeholder of (INITIAL_PLACEHOLDERS[key] || [])) {
-        pairs.push([placeholder, newVal, key]);
-      }
+    if (lock && lock[key] && lock[key] !== newVal) {
+      pairs.push([lock[key], newVal, key]);
+    }
+    for (const placeholder of (INITIAL_PLACEHOLDERS[key] || [])) {
+      pairs.push([placeholder, newVal, key]);
     }
   }
-  if (!lock) {
-    for (const [needle, replacement] of STATIC_INITIAL) pairs.push([needle, replacement, '(static)']);
-  }
+  for (const [needle, replacement] of STATIC_INITIAL) pairs.push([needle, replacement, '(static)']);
 
   let totalChanged = 0;
   for (const rel of TARGETS) {

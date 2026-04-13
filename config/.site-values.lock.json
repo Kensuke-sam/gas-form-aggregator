@@ -3,5 +3,6 @@
   "owner_name": "運営担当",
   "contact_email": "contact@example.com",
   "established_date": "2026-04-13",
-  "analytics_tool": "Google Analytics"
+  "analytics_tool": "Google Analytics",
+  "site_url": "https://example.github.io/gas-form-aggregator"
 }
