@@ -82,13 +82,15 @@ async function main() {
   const cfg = JSON.parse(cfgRaw);
   const lock = await loadLock();
 
+  // site_url は末尾スラッシュを剥がして正規化する（sitemap.xml / robots.txt 側で必ず "/" を付加する前提）。
+  const normalizedSiteUrl = cfg.site_url ? String(cfg.site_url).replace(/\/+$/, '') : cfg.site_url;
   const currentValues = {
     business_name: cfg.business_name,
     owner_name: cfg.owner_name,
     contact_email: cfg.contact_email,
     established_date: cfg.established_date,
     analytics_tool: cfg.analytics_tool,
-    site_url: cfg.site_url,
+    site_url: normalizedSiteUrl,
   };
 
   // 置換ペア列を構築（前値 → 新値）。

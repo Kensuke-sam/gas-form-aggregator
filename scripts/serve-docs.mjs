@@ -52,12 +52,12 @@ const server = createServer(async (req, res) => {
 
     let info;
     try { info = await stat(file); }
-    catch (_) { res.writeHead(404); return res.end(`404 Not Found: ${urlPath}`); }
+    catch (_) { res.writeHead(404); return res.end('404 Not Found'); }
 
     if (info.isDirectory()) {
       file = join(file, 'index.html');
       try { info = await stat(file); }
-      catch (_) { res.writeHead(404); return res.end(`404 Not Found: ${urlPath}`); }
+      catch (_) { res.writeHead(404); return res.end('404 Not Found'); }
     }
 
     const ext = extname(file).toLowerCase();
@@ -66,8 +66,9 @@ const server = createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store' });
     res.end(body);
   } catch (err) {
+    console.error('[serve] error:', err);
     res.writeHead(500);
-    res.end('Server error: ' + err.message);
+    res.end('500 Internal Server Error');
   }
 });
 
