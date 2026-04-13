@@ -7,7 +7,7 @@ LP（`docs/index.html`）から参照される画像・アイコン類。
 | `favicon.svg` | 各種ブラウザタブ用アイコン（ベクタ） | 配置済み |
 | `favicon.ico` | レガシーブラウザ用 fallback | **未配置（任意）** |
 | `og-image.svg` | OGP ソース（1200×630 ベクタ） | 配置済み |
-| `og-image.png` | OGP / Twitter カード画像（1200×630 PNG） | **未配置：`og-image.svg` を PNG 書き出しして配置** |
+| `og-image.png` | OGP / Twitter カード画像（1200×630 PNG） | 配置済み |
 | `demo-before.png` | デモ Before スクリーンショット | **未配置** |
 | `demo-after-tabs.png` | デモ After（タブ一覧） | **未配置** |
 | `demo-after-filtered.png` | デモ After（絞り込み後シート） | **未配置** |

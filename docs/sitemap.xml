@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.github.io/gas-form-aggregator/</loc>
+    <loc>https://kensuke-sam.github.io/gas-form-aggregator/</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://example.github.io/gas-form-aggregator/legal/tokutei.html</loc>
+    <loc>https://kensuke-sam.github.io/gas-form-aggregator/legal/tokutei.html</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://example.github.io/gas-form-aggregator/legal/privacy.html</loc>
+    <loc>https://kensuke-sam.github.io/gas-form-aggregator/legal/privacy.html</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://example.github.io/gas-form-aggregator/legal/terms.html</loc>
+    <loc>https://kensuke-sam.github.io/gas-form-aggregator/legal/terms.html</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
