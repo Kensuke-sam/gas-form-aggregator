@@ -15,3 +15,19 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+
+  site-values-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: lock と config の同期チェック（site:apply に未コミット差分が出ないこと）
+        run: |
+          node scripts/apply-site-values.mjs --write
+          if ! git diff --quiet; then
+            echo "::error::site-values.json と適用後のファイルに未コミット差分があります。ローカルで 'npm run site:apply' を実行して差分をコミットしてください。"
+            git --no-pager diff
+            exit 1
+          fi
