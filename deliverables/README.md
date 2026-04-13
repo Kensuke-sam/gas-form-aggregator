@@ -7,7 +7,9 @@
 | `setup-guide.md` | お客様 | 運用マニュアル本編 |
 | `rule-reference.md` | お客様 | `_rules` の書き方リファレンス |
 | `privacy-and-permissions.md` | お客様 | データ・権限の取り扱い |
+| `sample-data.md` | お客様（参考） | デモ用サンプルデータ仕様 |
 | `handoff-checklist.md` | 社内用 | 納品前チェックリスト |
+| `verification-checklist.md` | 社内用 | `Code.gs` 更新時の手動動作確認項目 |
 
 ## 納品パッケージ構成（理想形）
 
