@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# ローカルの秘匿情報
+.env
+.env.*
+secrets/
+archives/
+
+# 顧客データ（誤コミット防止）
+customers/
+drafts/
+*-private.md
