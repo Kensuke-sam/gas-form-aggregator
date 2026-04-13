@@ -40,6 +40,14 @@ const TARGETS = [
   'ops/form-confirmation-message.md',
 ];
 
+// 特定ファイルで `{YYYY-MM-DD}` は「支払期限」など per-invoice の動的値を指し、
+// 制定日（established_date）として置換すると誤適用になる。そのキーだけ除外する。
+const EXCLUDED_KEYS_PER_FILE = {
+  'templates/invoice.md': ['established_date'],
+  'templates/quotation.md': ['established_date'],
+  'templates/receipt.md': ['established_date'],
+};
+
 // value key → 初回扱い時に使う複数のプレースホルダ（表記揺れを吸収）
 // および補助置換（対応する site-values キーが無いもの）。
 const INITIAL_PLACEHOLDERS = {
@@ -105,8 +113,10 @@ async function main() {
 
     let after = before;
     const hits = [];
+    const excluded = EXCLUDED_KEYS_PER_FILE[rel] || [];
     for (const [needle, replacement, key] of pairs) {
       if (needle === replacement) continue;
+      if (excluded.includes(key)) continue;
       if (after.includes(needle)) {
         const count = after.split(needle).length - 1;
         hits.push(`[${key}] ${needle} → ${replacement} (${count}件)`);

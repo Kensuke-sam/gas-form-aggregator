@@ -1,28 +1,10 @@
 {
-  "_description": "LP・法務ページ・メールテンプレ全体で共有する値。このファイルを編集した後、`npm run site:apply` でHTML/MDに反映する。",
+  "_description": "LP・法務ページ・メールテンプレ全体で共有する値。このファイルを編集した後、`npm run site:apply` で全ファイルに反映する。",
   "_required_action": "公開前に business_name / owner_name / contact_email を実値へ差し替えること。",
 
   "business_name": "フォーム仕分けラボ",
   "owner_name": "運営担当",
   "contact_email": "contact@example.com",
   "established_date": "2026-04-13",
-  "last_updated": "2026-04-13",
-  "analytics_tool": "Google Analytics",
-  "inquiry_url": "",
-  "lp_url": "https://example.github.io/gas-form-aggregator/",
-
-  "_placeholder_map": {
-    "{屋号}": "business_name",
-    "{屋号 / 個人名}": "business_name",
-    "{氏名}": "owner_name",
-    "{メール}": "contact_email",
-    "{メールアドレス}": "contact_email",
-    "{連絡先メール}": "contact_email",
-    "{連絡先メールアドレス}": "contact_email",
-    "{郵便番号・住所}": "(請求時開示)",
-    "{番号}": "(請求時開示)",
-    "{使用ツール名：Google Analytics等}": "analytics_tool",
-    "{ツール名}": "analytics_tool",
-    "{YYYY-MM-DD}": "established_date"
-  }
+  "analytics_tool": "Google Analytics"
 }
