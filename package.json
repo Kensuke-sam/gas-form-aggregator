@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test tests/*.test.js",
     "site:preview": "node scripts/apply-site-values.mjs",
-    "site:apply": "node scripts/apply-site-values.mjs --write"
+    "site:apply": "node scripts/apply-site-values.mjs --write",
+    "serve": "node scripts/serve-docs.mjs"
   },
   "license": "UNLICENSED"
 }

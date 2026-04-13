@@ -75,22 +75,28 @@
   @media (max-width: 640px) { .usecase-row { grid-template-columns: 1fr; gap: 4px; } }
   .usecase-row > div:first-child { font-weight: 700; }
   .usecase-row > div:last-child { color: var(--ink-soft); }
+  .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 100; }
+  .skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: 10px 14px; background: var(--ink); color: #fff; border-radius: 8px; font-weight: 700; }
 </style>
 </head>
-<body>
+<body id="top">
 
-<nav class="nav">
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<nav class="nav" aria-label="グローバルナビゲーション">
   <div class="container-narrow mx-auto flex items-center justify-between px-5 py-3">
-    <a href="#" class="font-extrabold tracking-tight">フォーム仕分け自動化パック</a>
+    <a href="#top" class="font-extrabold tracking-tight" aria-label="フォーム仕分け自動化パック トップへ">フォーム仕分け自動化パック</a>
     <a href="#inquiry" class="hidden sm:inline-block text-sm font-bold px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-black transition">状況を送る</a>
   </div>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
-<section class="section">
+<section class="section" aria-labelledby="hero-title">
   <div class="container-narrow mx-auto">
-    <span class="pill">Google Apps Script / 月額費用なし / 7日納品</span>
-    <h1 class="h1 mt-5">Googleフォームの回答を、<br class="hidden sm:block">毎回コピペして仕分けていませんか？</h1>
+    <span class="pill" aria-hidden="true">Google Apps Script / 月額費用なし / 7日納品</span>
+    <h1 id="hero-title" class="h1 mt-5">Googleフォームの回答を、<br class="hidden sm:block">毎回コピペして仕分けていませんか？</h1>
     <p class="lead mt-6">
       届いた回答を、カテゴリごとのシートに自動で並べる仕組みを、あなたのGoogleアカウントに<strong>7日以内</strong>で組み込みます。
       ソフト導入もアカウント移行も不要。月額費用もかかりません。
@@ -284,6 +290,8 @@
     <p class="mt-4 text-xs" style="color:#94a3b8;">24時間以内に返信／見積もりまで無料</p>
   </div>
 </section>
+
+</main>
 
 <footer class="py-10 px-5 text-center text-xs muted">
   <div class="space-x-4">
